@@ -1,0 +1,3 @@
+*.so
+*.a
+examples/http_hello
