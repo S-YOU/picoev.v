@@ -1,4 +1,4 @@
-import picoev
+import syou.picoev
 
 pub fn callback(req byteptr) string {
 	return 'Hello, World!'

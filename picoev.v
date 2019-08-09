@@ -9,8 +9,8 @@ import net
 #include <fcntl.h>
 #include <netinet/tcp.h>
 
-#flag -I @VMOD/picoev
-#flag @VMOD/picoev/picoev.o
+#flag -I @VMOD/syou/picoev
+#flag @VMOD/syou/picoev/picoev.o
 #include "src/picoev.h"
 
 import const (
