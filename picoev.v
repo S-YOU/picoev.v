@@ -101,7 +101,7 @@ fn accept_callback(loop *C.picoev_loop, fd, events int, cb_arg voidptr) {
 }
 
 pub fn new(port int, cb voidptr) *Picoev {
-	sock := net.socket(AF_INET, SOCK_STREAM, 0) or { panic(err) return &Picoev{} }
+	sock := net.socket(AF_INET, SOCK_STREAM, 0) or { panic(err) }
 	assert sock.sockfd != -1
 
 	flag := int(1)
@@ -115,10 +115,10 @@ pub fn new(port int, cb voidptr) *Picoev {
 		assert C.setsockopt(sock.sockfd, IPPROTO_TCP, TCP_FASTOPEN, &queue_len, 8) == 0
 	}
 
-	bind_res := sock.bind(port) or { panic(err) return &Picoev{} }
+	bind_res := sock.bind(port) or { panic(err) }
 	assert bind_res == 0
 
-	listen_res := sock.listen() or { panic(err) return &Picoev{} }
+	listen_res := sock.listen() or { panic(err) }
 	assert listen_res == 0
 
 	setup_sock(sock.sockfd)
